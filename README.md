@@ -12,7 +12,19 @@ Website will return a list of cocktail ideas so they can stop asking the bartend
 
 ## API and Data Sample
 
-Cocktail API - www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}
+Cocktail API 
+
+By Ingredient - www.thecocktaildb.com/api/json/v1/1/filter.php?i=ingredient
+
+By Category - www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic
+
+By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
+
+![Screen Shot 2021-06-22 at 8 50 44 AM](https://user-images.githubusercontent.com/85095722/122951682-14ca3d80-d343-11eb-9587-8a1d0fd751f5.png)
+
+![Screen Shot 2021-06-22 at 8 51 36 AM](https://user-images.githubusercontent.com/85095722/122951699-185dc480-d343-11eb-9b26-b130e78c30ec.png)
+
+
 
 ## Wireframes
 ![What_Should_You_Drink_Wireframe](https://user-images.githubusercontent.com/85095722/122938029-06c2ef80-d338-11eb-8b26-c5cca4b98c63.jpg)
