@@ -1,0 +1,23 @@
+body {
+    background-color: #f2a126;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* class */
+
+
+
+
+
+/* ids */
+#pageTitle {
+    height: 25vh;
+}
+#ingredients {
+    display: flex;
+    justify-content: center;
+}
