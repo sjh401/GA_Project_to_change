@@ -27,7 +27,7 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 
 
 ## Wireframes
-![What_Should_You_Drink_Wireframe](https://user-images.githubusercontent.com/85095722/122938029-06c2ef80-d338-11eb-8b26-c5cca4b98c63.jpg)
+![What_Should_You_Drink_Wireframe (1)](https://user-images.githubusercontent.com/85095722/122952773-dc772f00-d343-11eb-9efe-9379e68a6350.jpg)
 
 
 #### MVP 
