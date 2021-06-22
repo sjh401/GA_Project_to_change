@@ -36,7 +36,7 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 - Display drink image and name
 - Onclick to show instructions and ingredients for drink
 - Add no more results styling to flexboxes for results less than 9
-- Add text box for users to save favorites 
+- Remove previous results
 
 #### PostMVP  
 
