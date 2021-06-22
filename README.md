@@ -8,7 +8,7 @@ What Should You Drink? -
 
 ## Project Description
 
-Website will return a list of cocktail ideas so they can stop asking the bartender "What should I order?". I will include a age verification and selection for just non alc drinks.
+Website will return a list of cocktail ideas with ingredients list and measurements. I will include a age verification and selection for just non alc drinks.
 
 ## API and Data Sample
 
