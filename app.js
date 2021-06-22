@@ -19,13 +19,17 @@ const grabDrinks = async (ingredient) => {
         const drinkData = response.data.drinks
         
         for(let i = 0; i < 9; i++) {
+        const drinkDiv = document.createElement('div')
+        drinkDiv.setAttribute('class', 'drink-container')
         const drinkImage = document.createElement('img')
         const drinkName = document.createElement('h2')
         drinkImage.setAttribute('src',drinkData[i].strDrinkThumb)
         drinkImage.setAttribute('alt',drinkData[i].strDrink)
+        drinkImage.setAttribute('style','height: auto; width: 150px;')
         drinkName.innerText = drinkData[i].strDrink
-        drinkFlex.appendChild(drinkName)
-        drinkFlex.appendChild(drinkImage)
+        drinkFlex.appendChild(drinkDiv)
+        drinkDiv.appendChild(drinkName)
+        drinkDiv.appendChild(drinkImage)
         }
 
         // return response
