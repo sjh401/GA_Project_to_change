@@ -55,20 +55,20 @@ Cocktail API - www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| Adding Form | H | 3hrs| 3.5hrs | 3.5hrs |
-| Working with API | H | 3hrs| 2.5hrs | 2.5hrs |
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-|	|	|	|	|	|
-| Total | H | 6hrs| 5hrs | 5hrs |
+|	Boilerplate HTML | H | 0.5hrs |	|	|
+| Gathering API Data | H | 2hrs| | |
+|	Form Submission | H | 2.5hrs |	|	|
+| Filtering Alc vs Non | H | 3hrs | | |
+|	Displaying Results to DOM| H | 3hrs |	|	|
+|	Styling Flexbox Results | H | 3hrs |	|	|
+| Results Styling | H | 3hrs| | |
+| Onclick Result Responsiveness | H | 3hrs |	|	|
+|	Background Layout & Arrangement | H	| 3hrs |	|	|
+|	Favorite Saver & Styling | M | 2hrs	|	|	|
+|	Functionality & Responsiveness Review | H | 3hrs |	|	|
+| CSS Fonts & Button Styling | M | 2.5hrs |	|	|
+| Presentation Final Check | H | 2hrs |	|	|
+| Total | H | 32.5hrs|  |  |
 
 ## Code Snippet
 
