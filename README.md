@@ -4,7 +4,7 @@
 
 ## Project Name
 
-What Should You Drink? - url to follow
+What Should You Drink? - 
 
 ## Project Description
 
