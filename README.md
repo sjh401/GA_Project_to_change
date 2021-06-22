@@ -32,7 +32,6 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 
 #### MVP 
 
-- Create age verification/non-alc filter
 - Filter drinks by ingredient and return a list of 9
 - Display drink image and name
 - Onclick to show instructions and ingredients for drink
@@ -45,6 +44,7 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 - Add compare feature to look at multiple drinks
 - Style Search botton with drinks glass
 - Change backgorund image for filtered category
+- Create age verification/non-alc filter
 
 ## Project Schedule
 
