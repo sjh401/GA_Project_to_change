@@ -16,7 +16,7 @@ const inputButton = document.querySelector('#ingredient-button')
 
 
 const grabDrinks = async (ingredient) => {
-    console.log(ingredient)
+    // console.log(ingredient)
     try {
         const nonAlc = document.querySelector('#non-alc')
         if(nonAlc.checked === false) {
@@ -90,17 +90,22 @@ const grabDrinkData = async (drinkID) => {
     try {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
         const response = await axios.get(url)
-        // console.log(response)
+        console.log(response)
         const drinkData = response.data.drinks[0]
         const id = drinkData.idDrink
         const drinkName = document.getElementById(`${id}`)
         // console.log(drinkData.strDrink)
         const drinkIngredients = document.createElement('div')
         drinkIngredients.setAttribute('class', 'ingredient-container')
-        drinkIngredients.setAttribute('style','display: none;')
-        drinkIngredients.innerText = drinkData.strDrink
-        drinkName.appendChild(drinkIngredients)
-        
+        drinkIngredients.setAttribute('style','display: flex;')
+        let i = 1
+        while(i < 3) {
+            let ingredient = `strIngredient${i}`
+            drinkIngredients.innerText = drinkData.ingredient
+            drinkName.append(drinkIngredients)
+            console.log(drinkData.ingredient)
+            i++
+        }
     } catch (error) {
         console.error(error)
     }
