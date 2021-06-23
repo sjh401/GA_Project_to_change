@@ -18,33 +18,59 @@ const inputButton = document.querySelector('#ingredient-button')
 const grabDrinks = async (ingredient) => {
     console.log(ingredient)
     try {
-        const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
-        const response = await axios.get(url)
-        console.log(response)
-        // console.log(response.data.drinks[0].strDrinkThumb)
-        const drinkData = response.data.drinks
-        
-        for(let i = 0; i < drinkData.length; i++) {
-        const drinkDiv = document.createElement('div')
-        const drinkImage = document.createElement('img')
-        const drinkName = document.createElement('h2')
-        drinkDiv.setAttribute('class', 'drink-container')
-        drinkImage.setAttribute('src', drinkData[i].strDrinkThumb)
-        drinkImage.setAttribute('alt', drinkData[i].strDrink)
-        drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
-        drinkName.setAttribute('id',drinkData[i].idDrink)
-        drinkName.innerText = drinkData[i].strDrink
-        drinkFlex.appendChild(drinkDiv)
-        drinkDiv.appendChild(drinkName)
-        drinkDiv.appendChild(drinkImage)
-        grabDrinkData(drinkData[i].idDrink)
-        }
-        return response
+        const nonAlc = document.querySelector('#non-alc')
+        if(nonAlc.checked === false) {
+            const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
+            const response = await axios.get(url)
+            console.log(response)
+            // console.log(response.data.drinks[0].strDrinkThumb)
+            const drinkData = response.data.drinks
+            for(let i = 0; i < drinkData.length; i++) {
+                const drinkDiv = document.createElement('div')
+                const drinkImage = document.createElement('img')
+                const drinkName = document.createElement('h2')
+                drinkDiv.setAttribute('class', 'drink-container')
+                drinkImage.setAttribute('src', drinkData[i].strDrinkThumb)
+                drinkImage.setAttribute('alt', drinkData[i].strDrink)
+                drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
+                drinkName.setAttribute('id',drinkData[i].idDrink)
+                drinkName.innerText = drinkData[i].strDrink
+                drinkFlex.appendChild(drinkDiv)
+                drinkDiv.appendChild(drinkName)
+                drinkDiv.appendChild(drinkImage)
+                grabDrinkData(drinkData[i].idDrink)
+                // document.getElementById(`${drinkData[i].idDrink}`).onmouseout = function () {hideIngredients()};
+                // document.getElementById(`${drinkData[i].idDrink}`).onmouseover = function () {displayIngredients()};
+                }
+            } else{
+                const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}&a=non_alcoholic`
+            const response = await axios.get(url)
+            console.log(response)
+            // console.log(response.data.drinks[0].strDrinkThumb)
+            const drinkData = response.data.drinks
+            for(let i = 0; i < drinkData.length; i++) {
+                const drinkDiv = document.createElement('div')
+                const drinkImage = document.createElement('img')
+                const drinkName = document.createElement('h2')
+                drinkDiv.setAttribute('class', 'drink-container')
+                drinkImage.setAttribute('src', drinkData[i].strDrinkThumb)
+                drinkImage.setAttribute('alt', drinkData[i].strDrink)
+                drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
+                drinkName.setAttribute('id',drinkData[i].idDrink)
+                drinkName.innerText = drinkData[i].strDrink
+                drinkFlex.appendChild(drinkDiv)
+                drinkDiv.appendChild(drinkName)
+                drinkDiv.appendChild(drinkImage)
+                grabDrinkData(drinkData[i].idDrink)
+                // document.getElementById(`${drinkData[i].idDrink}`).onmouseout = function () {hideIngredients()};
+                // document.getElementById(`${drinkData[i].idDrink}`).onmouseover = function () {displayIngredients()};
+            }
+            }
     } catch (error) {
         console.error(error)
     }
-    
 }
+
 
 function removeResults(node) {
     while(node.firstChild) {
@@ -71,18 +97,17 @@ const grabDrinkData = async (drinkID) => {
         // console.log(drinkData.strDrink)
         const drinkIngredients = document.createElement('div')
         drinkIngredients.setAttribute('class', 'ingredient-container')
-        drinkIngredients.setAttribute('style','display: block;')
+        drinkIngredients.setAttribute('style','display: none;')
         drinkIngredients.innerText = drinkData.strDrink
         drinkName.appendChild(drinkIngredients)
-        drinkName.addEventListener('mouseover', (e => {
-            showIngredients(id)
-        }))
+        
     } catch (error) {
         console.error(error)
     }
 }
 
-function showIngredients(id) {
-    const drinkName = document.getElementById(`${id}`)
-    drinkName.setAttribute('style','display: none;')
-}
+
+// function showIngredients(id) {
+//     const drinkName = document.getElementById(`${id}`)
+//     drinkName.setAttribute('style','display: block;')
+// }

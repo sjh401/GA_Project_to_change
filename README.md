@@ -70,7 +70,7 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 |	Boilerplate HTML | H | 0.5hrs | 0.5hrs | 0.5hrs |
 | Gathering API Data | H | 2hrs| 1.5hrs | 2hrs |
 |	Form Submission | H | 2.5hrs |	2hrs | 4hrs |
-| Filtering Alc vs Non | H | 3hrs | | |
+| Filtering Alc vs Non | H | 3hrs | 3hrs | 7hrs |
 |	Displaying Results to DOM| H | 3hrs |	|	|
 |	Styling Flexbox Results | H | 3hrs |	|	|
 | Results Styling | H | 3hrs| | |
