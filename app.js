@@ -42,8 +42,8 @@ const grabDrinks = async (ingredient) => {
 }
 // grabDrinks('rum')
 
-const form = document.querySelector('#ingredient-form')
-form.addEventListener('submit', (e => {
+const button = document.querySelector('#ingredient-button')
+button.addEventListener('click', (e => {
     e.preventDefault() 
     const ingredient = document.querySelector('#ingredient-box').value
     grabDrinks(ingredient)
