@@ -50,8 +50,8 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 
 |  Day | Deliverable | Status
 |---|---| ---|
-|June 22| Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete
-|June 22| Project Approval / Core Application Structure (HTML, CSS, etc.) | Incomplete
+|June 22| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
+|June 22| Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete
 |June 23| Pseudocode / actual code | Incomplete
 |June 24| Initial Clickable Model  | Incomplete
 |June 25| MVP | Incomplete

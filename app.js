@@ -42,11 +42,18 @@ const grabDrinks = async (ingredient) => {
 }
 // grabDrinks('rum')
 
+function removeResults(node) {
+    while(node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
 const button = document.querySelector('#ingredient-button')
 button.addEventListener('click', (e => {
     e.preventDefault() 
+    removeResults(drinkFlex)
     const ingredient = document.querySelector('#ingredient-box').value
     grabDrinks(ingredient)
     document.querySelector('#ingredient-box').value = ''
     return ingredient
 }))
+
