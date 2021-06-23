@@ -40,7 +40,7 @@ const grabDrinks = async (ingredient) => {
         console.log(error)
     }
 }
-// grabDrinks('vodka')
+// grabDrinks('rum')
 
 const form = document.querySelector('#ingredient-form')
 form.addEventListener('submit', (e => {
