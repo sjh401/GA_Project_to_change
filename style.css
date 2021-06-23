@@ -15,6 +15,7 @@ h2 {
     display: flex;
     flex-flow: column wrap;
     padding: 50px 50px;
+    
 }
 
 
@@ -40,4 +41,5 @@ h2 {
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+
 }

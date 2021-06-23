@@ -13,6 +13,8 @@
 const drinkFlex = document.querySelector('#results')
 const inputButton = document.querySelector('#ingredient-button')
 
+
+
 const grabDrinks = async (ingredient) => {
     console.log(ingredient)
     try {
@@ -24,23 +26,24 @@ const grabDrinks = async (ingredient) => {
         
         for(let i = 0; i < drinkData.length; i++) {
         const drinkDiv = document.createElement('div')
-        drinkDiv.setAttribute('class', 'drink-container')
         const drinkImage = document.createElement('img')
         const drinkName = document.createElement('h2')
-        drinkImage.setAttribute('src',drinkData[i].strDrinkThumb)
-        drinkImage.setAttribute('alt',drinkData[i].strDrink)
-        drinkImage.setAttribute('style','height: auto; width: 25vh;')
+        drinkDiv.setAttribute('class', 'drink-container')
+        drinkImage.setAttribute('src', drinkData[i].strDrinkThumb)
+        drinkImage.setAttribute('alt', drinkData[i].strDrink)
+        drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
         drinkName.innerText = drinkData[i].strDrink
         drinkFlex.appendChild(drinkDiv)
         drinkDiv.appendChild(drinkName)
         drinkDiv.appendChild(drinkImage)
+        
         }
         return response
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
+    
 }
-// grabDrinks('rum')
 
 function removeResults(node) {
     while(node.firstChild) {
@@ -56,4 +59,16 @@ button.addEventListener('click', (e => {
     document.querySelector('#ingredient-box').value = ''
     return ingredient
 }))
+const grabDrinkData = async (drinkID) => {
+    try {
+        const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
+        const response = await axios.get(url)
+        console.log(response)
+    } catch (error) {
+        console.error(error)
+    }
+}
 
+// function showIngredients(drinkImage) {
+//     drinkImage.setAttribute('style','display: none;')
+// }
