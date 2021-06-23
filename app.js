@@ -32,11 +32,12 @@ const grabDrinks = async (ingredient) => {
         drinkImage.setAttribute('src', drinkData[i].strDrinkThumb)
         drinkImage.setAttribute('alt', drinkData[i].strDrink)
         drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
+        drinkName.setAttribute('id',drinkData[i].idDrink)
         drinkName.innerText = drinkData[i].strDrink
         drinkFlex.appendChild(drinkDiv)
         drinkDiv.appendChild(drinkName)
         drinkDiv.appendChild(drinkImage)
-        
+        grabDrinkData(drinkData[i].idDrink)
         }
         return response
     } catch (error) {
@@ -63,12 +64,25 @@ const grabDrinkData = async (drinkID) => {
     try {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
         const response = await axios.get(url)
-        console.log(response)
+        // console.log(response)
+        const drinkData = response.data.drinks[0]
+        const id = drinkData.idDrink
+        const drinkName = document.getElementById(`${id}`)
+        // console.log(drinkData.strDrink)
+        const drinkIngredients = document.createElement('div')
+        drinkIngredients.setAttribute('class', 'ingredient-container')
+        drinkIngredients.setAttribute('style','display: block;')
+        drinkIngredients.innerText = drinkData.strDrink
+        drinkName.appendChild(drinkIngredients)
+        drinkName.addEventListener('mouseover', (e => {
+            showIngredients(id)
+        }))
     } catch (error) {
         console.error(error)
     }
 }
 
-// function showIngredients(drinkImage) {
-//     drinkImage.setAttribute('style','display: none;')
-// }
+function showIngredients(id) {
+    const drinkName = document.getElementById(`${id}`)
+    drinkName.setAttribute('style','display: none;')
+}
