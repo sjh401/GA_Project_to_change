@@ -2,8 +2,11 @@ body {
     background-color: #f2a126;
 }
 h1 {
-    display: flex;
-    justify-content: center;
+    font-size: 12vh;
+}
+h2 {
+    text-align: left;
+    font-size: 25px;
 }
 
 
@@ -20,10 +23,16 @@ h1 {
 /* ids */
 #pageTitle {
     height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-image: ; */
 }
 #ingredients {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
 }
 
 #results {
