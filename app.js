@@ -14,8 +14,8 @@ const grabDrinks = async (ingredient) => {
         if(nonAlc.checked === false) {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
             const response = await axios.get(url)
-            console.log(response)
-            console.log(response.data.drinks[0].strDrinkThumb)
+            // console.log(response)
+            // console.log(response.data.drinks[0].strDrinkThumb)
             const drinkData = response.data.drinks
             for(let i = 0; i < drinkData.length; i++) {
                 const drinkDiv = document.createElement('div')
@@ -24,11 +24,11 @@ const grabDrinks = async (ingredient) => {
                 drinkDiv.setAttribute('class', 'drink-container')
                 const backImage = `url(${drinkData[i].strDrinkThumb})`
                 drinkDiv.style.backgroundImage = backImage
-                console.log(backImage)
+                // console.log(backImage)
                 // drinkImage.setAttribute('src', drinkData[i].strDrinkThumb)
                 // drinkImage.setAttribute('alt', drinkData[i].strDrink)
                 // drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
-                drinkName.setAttribute('id',drinkData[i].idDrink)
+                drinkDiv.setAttribute('id',drinkData[i].idDrink)
                 drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 3.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
@@ -87,11 +87,14 @@ const grabDrinkData = async (drinkID) => {
         console.log(response)
         const drinkData = response.data.drinks[0]
         const id = drinkData.idDrink
-        const drinkName = document.getElementById(`${id}`)
-        // console.log(drinkData.strDrink)
+        const drinkFlex = document.getElementById(`${id}`)
+        // const drinkFlex = document.
+        let strIngredient1 = `${drinkData.strMeasure1} of ${drinkData.strIngredient1}`
         const drinkIngredients = document.createElement('div')
         drinkIngredients.setAttribute('class', 'ingredient-container')
         drinkIngredients.setAttribute('style','display: flex;')
+        drinkFlex.append(drinkIngredients)
+        let strIngredient = (strIngredient1 !== null) ? drinkIngredients.append(strIngredient1): null
         // let i = 1
         // while(i < 3) {
         //     let ingredient = drinkData.strIngredient1
@@ -104,3 +107,13 @@ const grabDrinkData = async (drinkID) => {
         console.error(error)
     }
 }
+
+// const appendIngredients = (ingredient) => {
+//     const drinkName = document.getElementById(`${id}`)
+//     const drinkIngredients = document.createElement('div')
+//     drinkIngredients.setAttribute('class', 'ingredient-container')
+//     drinkIngredients.setAttribute('style','display: flex;')
+//     let stringredient = ingredient
+//     drinkIngredients.innerText = drinkData.stringredient
+//     drinkName.append(drinkIngredients)
+// }

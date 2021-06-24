@@ -48,7 +48,7 @@ h2 {
 .ingredient-container {
     display: flex;
     flex-flow: column;
-    font-size: 50%;
+    font-size: 100%;
 }
 
 
