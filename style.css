@@ -1,5 +1,14 @@
 body {
     background-color: #f2a126;
+    display: flex;
+    min-height: 100%;
+    flex-flow: column;
+}
+footer {
+    flex: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 h1 {
     font-size: 12vh;
@@ -14,7 +23,13 @@ h2 {
 .drink-container {
     display: flex;
     flex-flow: column wrap;
-    padding: 50px 50px;
+    height: 25vh;
+    width: 25vh;
+    margin: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
 
 }
 
