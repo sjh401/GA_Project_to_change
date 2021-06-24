@@ -5,11 +5,17 @@ body {
     flex-flow: column;
 }
 footer {
-    flex: none;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    position: fixed;
+    bottom: 5%;
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
+a {
+    display: flex;
+    justify-content: center;
+}
+
 h1 {
     font-size: 12vh;
 }
