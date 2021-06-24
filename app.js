@@ -30,8 +30,6 @@ const grabDrinks = async (ingredient) => {
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
                 grabDrinkData(drinkData[i].idDrink)
-                // document.getElementById(`${drinkData[i].idDrink}`).onmouseout = function () {hideIngredients()};
-                // document.getElementById(`${drinkData[i].idDrink}`).onmouseover = function () {displayIngredients()};
                 }
             } else{
                 const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic`
@@ -40,9 +38,13 @@ const grabDrinks = async (ingredient) => {
             const drinkData = response.data.drinks
             for(let i = 0; i < drinkData.length; i++) {
                 const drinkDiv = document.createElement('div')
-                const drinkName = document.createElement('h2')
+                const drinkName = document.createElement('div')
                 drinkDiv.setAttribute('class', 'drink-container')
-                drinkDiv.setAttribute('style',`backgorund-image: url(${drinkData[i].strDrinkThumb})`)
+                const backImage = `url(${drinkData[i].strDrinkThumb})`
+                drinkDiv.style.backgroundImage = backImage
+                // console.log(backImage)
+                drinkDiv.setAttribute('id',drinkData[i].idDrink)
+                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
@@ -60,6 +62,7 @@ function removeResults(node) {
         node.removeChild(node.firstChild)
     }
 }
+
 const button = document.querySelector('#ingredient-button')
 button.addEventListener('click', (e => {
     e.preventDefault() 
@@ -67,7 +70,7 @@ button.addEventListener('click', (e => {
     const ingredient = document.querySelector('#ingredient-box').value
     grabDrinks(ingredient)
     document.querySelector('#ingredient-box').value = ''
-    return ingredient
+    // return ingredient
 }))
 const grabDrinkData = async (drinkID) => {
     try {
@@ -82,19 +85,32 @@ const grabDrinkData = async (drinkID) => {
         }
         console.log(arrayIngredient)
         const id = drinkData.idDrink
-        const drinkFlex = document.getElementById(`${id}`)
+        const drinkDiv = document.getElementById(`${id}`)
         const drinkIngredients = document.createElement('div')
         const drinkInstructions = document.createElement('div')
         drinkInstructions.setAttribute('class', 'ingredient-container')
-        drinkInstructions.setAttribute('style','display: flex;')
         drinkIngredients.setAttribute('class', 'ingredient-container')
-        drinkIngredients.setAttribute('style','display: flex;')
-        drinkFlex.append(drinkIngredients)
-        drinkFlex.append(drinkInstructions)
+        drinkDiv.append(drinkIngredients)
+        drinkIngredients.append(drinkInstructions)
         drinkIngredients.innerText = arrayIngredient
         drinkInstructions.innerText = drinkData.strInstructions
+        // drinkDiv.setAttribute('onclick','hideIngredients()')
+        // drinkDiv.setAttribute('onmouseover','displayIngredients()')
     } catch (error) {
         console.error(error)
     }
 }
 
+function displayIngredients(e) {
+    const ingredientContainer = document.querySelectorAll('.ingredient-container')
+    ingredientContainer.setAttribute('style','display: flex;')
+    // e.preventDefault()
+}
+// function hideIngredients() {
+//     let ingredientContainer = document.querySelector('.ingredient-container')
+//     ingredientContainer.setAttribute('style','display: none;')
+
+// }
+
+// document.querySelector(`.drink-container`).offclick = function () {hideIngredients()};
+// document.querySelector(`.drink-container`).onclick = function () {displayIngredients()};
