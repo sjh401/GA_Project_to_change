@@ -40,7 +40,7 @@ h2 {
     background-position: center;
 }
 .ingredient-container {
-    display: flex;
+    display: hide;
     flex-flow: column wrap;
     background: #20201d; 
     color: #fff; 

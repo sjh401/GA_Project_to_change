@@ -76,14 +76,18 @@ const grabDrinkData = async (drinkID) => {
     try {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
         const response = await axios.get(url)
-        console.log(response)
+        // console.log(response)
         const drinkData = response.data.drinks[0]
         const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15, ...other} = drinkData
         let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
-        for (let i = arrayIngredient.length - 1; i > -1; i--) {
-            (arrayIngredient[i] === null) ? arrayIngredient.splice(i,1) :  ((arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false)
-        }
-        console.log(arrayIngredient)
+        let stringIngredient = arrayIngredient.toString()
+        let clean = stringIngredient.replaceAll(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,'&&',,,,,,,,,,,,,'&&',,,,,,,,,,,,'&&',,,,,,,,,,,'&&',,,,,,,,,,'&&',,,,,,,,,'&&',,,,,,,,'&&',,,,,,,'&&',,,,,,'&&',,,,,'&&',,,,'&&',,,','')
+        let clean2 = clean.replaceAll(',,'&&' ,',', ')
+        arrayIngredient = clean2.split(',')
+        // console.log(arrayIngredient)
+        // for (let i = arrayIngredient.length - 1; i > -1; i--) {
+        //     (arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false
+        // }
         const id = drinkData.idDrink
         const drinkDiv = document.getElementById(`${id}`)
         const drinkIngredients = document.createElement('div')
@@ -91,18 +95,18 @@ const grabDrinkData = async (drinkID) => {
         drinkInstructions.setAttribute('class', 'ingredient-container')
         drinkIngredients.setAttribute('class', 'ingredient-container')
         drinkDiv.append(drinkIngredients)
-        drinkIngredients.append(drinkInstructions)
+        drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = arrayIngredient
         drinkInstructions.innerText = drinkData.strInstructions
         // drinkDiv.setAttribute('onclick','hideIngredients()')
-        // drinkDiv.setAttribute('onmouseover','displayIngredients()')
+        drinkDiv.setAttribute('onmouseover','displayIngredients()')
     } catch (error) {
         console.error(error)
     }
 }
 
 function displayIngredients(e) {
-    const ingredientContainer = document.querySelectorAll('.ingredient-container')
+    const ingredientContainer = document.querySelector('.ingredient-container')
     ingredientContainer.setAttribute('style','display: flex;')
     // e.preventDefault()
 }
