@@ -29,7 +29,7 @@ const grabDrinks = async (ingredient) => {
                 // drinkImage.setAttribute('alt', drinkData[i].strDrink)
                 // drinkImage.setAttribute('style','display: block; height: auto; width: 25vh;')
                 drinkName.setAttribute('id',drinkData[i].idDrink)
-                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
+                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 3.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)

@@ -1,19 +1,26 @@
 body {
     background-color: #f2a126;
     display: flex;
-    min-height: 100%;
+    min-height: 100vh;
     flex-flow: column;
 }
+header{
+    order: 0;
+}
+main {
+    order: 0;
+    min-height: 65vh;
+}
 footer {
-    position: fixed;
-    bottom: 5%;
-    left: 0;
+    display: flex;
+    /* position: absolute; */
     width: 100%;
-    text-align: center;
+    justify-content: center;
+    order: 1;
 }
 a {
-    display: flex;
-    justify-content: center;
+
+    color: #000;
 }
 
 h1 {
@@ -21,16 +28,15 @@ h1 {
 }
 h2 {
     text-align: left;
-    font-size: 15px;
+    font-size: 15vh;
 }
-
 
 /* class */
 .drink-container {
     display: flex;
     flex-flow: column wrap;
-    height: 25vh;
-    width: 25vh;
+    height: 50vh;
+    width: 50vh;
     margin: 20px;
     background-size: cover;
     background-repeat: no-repeat;
