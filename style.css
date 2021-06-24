@@ -28,27 +28,28 @@ h1 {
 }
 h2 {
     text-align: left;
-    font-size: 15vh;
+    font-size: 7vh;
 }
 
 /* class */
 .drink-container {
     display: flex;
     flex-flow: column wrap;
-    height: 50vh;
-    width: 50vh;
+    height: 30vh;
+    width: 30vh;
     margin: 20px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-
-
 }
 
 .ingredient-container {
     display: flex;
-    flex-flow: column;
-    font-size: 100%;
+    background: #20201d; 
+    color: #fff; 
+    padding: 5px; 
+    opacity: 0.85; 
+    font-size: 1.5vh;
 }
 
 

@@ -25,7 +25,7 @@ const grabDrinks = async (ingredient) => {
                 drinkDiv.style.backgroundImage = backImage
                 // console.log(backImage)
                 drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 3.5vh;')
+                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
@@ -73,22 +73,26 @@ const grabDrinkData = async (drinkID) => {
     try {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
         const response = await axios.get(url)
-        // console.log(response)
+        console.log(response)
         const drinkData = response.data.drinks[0]
         const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15, ...other} = drinkData
         let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
-        for (let i = arrayIngredient.length - 1; i > 0; i--) {
+        for (let i = arrayIngredient.length - 1; i > -1; i--) {
             (arrayIngredient[i] === null) ? arrayIngredient.splice(i,1) :  ((arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false)
         }
         console.log(arrayIngredient)
-        const ingredientString = ``
         const id = drinkData.idDrink
         const drinkFlex = document.getElementById(`${id}`)
         const drinkIngredients = document.createElement('div')
+        const drinkInstructions = document.createElement('div')
+        drinkInstructions.setAttribute('class', 'ingredient-container')
+        drinkInstructions.setAttribute('style','display: flex;')
         drinkIngredients.setAttribute('class', 'ingredient-container')
         drinkIngredients.setAttribute('style','display: flex;')
         drinkFlex.append(drinkIngredients)
+        drinkFlex.append(drinkInstructions)
         drinkIngredients.innerText = arrayIngredient
+        drinkInstructions.innerText = drinkData.strInstructions
     } catch (error) {
         console.error(error)
     }
