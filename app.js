@@ -99,25 +99,21 @@ const grabDrinkData = async (drinkID) => {
         drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
         drinkInstructions.innerText = drinkData.strInstructions
-        // const drinkName = document.querySelector(`'.${id}'`)
-        // drinkName.addEventListener('onmouseover',displayIngredients(`'.${id}'`))
-        // console.log(`'.${id}'`)
+        const drinkName = document.querySelector(`'.${id}'`)
+        drinkName.addEventListener('mouseenter',displayIngredients(`'.${id}'`))
+        drinkName.addEventListener('mouseleave',hideIngredients(`'.${id}'`))
+
     } catch (error) {
         console.error(error)
     }
 }
 
-// function displayIngredients(id) {
-//     let ingredientContainer = document.querySelector(id)
-//     ingredientContainer.setAttribute('style','opacity: 0.85;')
-// }
+function displayIngredients(id) {
+    let ingredientContainer = document.querySelector(id)
+    ingredientContainer.setAttribute('style','opacity: 0.85;')
+}
 
-// const drinkIngredients = document.querySelectorAll('.ingredient-container')
-// drinkIngredients.addEventListener('onmouseover', (e => {
-//     const ingredientsContainer = document.querySelector('.ingredient-container')
-//     ingredientsContainer.style.opacity = '0.85'
-// }
-
-// document.querySelector(`.drink-container`).offclick = function () {hideIngredients()};
-// document.querySelector(`.ingredient-container`).onmouseover = function () {displayIngredients()};
-
+function hideIngredients(id) {
+    let ingredientContainer = document.querySelector(id)
+    ingredientContainer.setAttribute('style','opacity: 0;')
+}
