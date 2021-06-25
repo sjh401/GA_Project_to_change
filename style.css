@@ -64,12 +64,18 @@ p {
     background: #20201d; 
     color: #fff; 
     padding: 5px; 
-    opacity: 0; 
+    opacity: 0.85; 
     font-size: 1.5vh;
     max-height: 10em;
     overflow: scroll;
     
 }
+
+.hide {
+    display: none;
+}
+
+
 #show-description {
     opacity: 1;
 }

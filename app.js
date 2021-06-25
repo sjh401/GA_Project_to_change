@@ -1,12 +1,6 @@
-// By Ingredient - www.thecocktaildb.com/api/json/v1/1/filter.php?i=ingredient
-// By Category - www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic
-// By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
-
-
 const drinkFlex = document.querySelector('.results')
 const inputButton = document.querySelector('#ingredient-button')
-
-
+const button = document.querySelector('#ingredient-button')
 
 const grabDrinks = async (ingredient) => {
     try {
@@ -54,22 +48,33 @@ const grabDrinks = async (ingredient) => {
     }
 }
 
-
 function removeResults(node) {
     while(node.firstChild) {
         node.removeChild(node.firstChild)
     }
 }
 
-const button = document.querySelector('#ingredient-button')
 button.addEventListener('click', (e => {
     e.preventDefault() 
     removeResults(drinkFlex)
     const ingredient = document.querySelector('#ingredient-box').value
     grabDrinks(ingredient)
     document.querySelector('#ingredient-box').value = ''
+    return ingredient
 }))
 
+const generic = document.querySelector('.drink-container')
+
+generic.addEventListener('mouseover', () => {
+    drinkDiv.classList.toggle('hide')
+    drinkInstructions.classList.toggle('hide')
+})
+
+// const ingredient = document.querySelector('#ingredient-box').value
+// const pageTitle = document.querySelector('#pageTitle')
+// if (ingredient === 'vodka') {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/vETgiD8.jpg?1')"
+// } 
 
 const grabDrinkData = async (drinkID) => {
     try {
@@ -78,32 +83,20 @@ const grabDrinkData = async (drinkID) => {
         // console.log(response)
         const drinkData = response.data.drinks[0]
         const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15} = drinkData
-        // let array = {1:`${strMeasure1 + strIngredient1}, `, 2:`${strMeasure2 + strIngredient2}, `, 3:`${strMeasure3 + strIngredient3}, `, 4:`${strMeasure4 + strIngredient4}, `, 5:`${strMeasure5 + strIngredient5}, `, 6:`${strMeasure6 + strIngredient6}, `, 7:`${strMeasure7 + strIngredient7}, `, 8:`${strIngredient8 + strMeasure8}, `, 9:`${strIngredient9 + strMeasure9}, `, 10:`${strIngredient10 + strMeasure10}, `, 11:`${strIngredient11 + strMeasure11}, `, 12:`${strMeasure12 + strIngredient12}, `, 13:`${strIngredient13 + strMeasure13}, `, 14:`${strMeasure14 + strIngredient14}, `, 15:`${strMeasure15 + strIngredient15}`}
         let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
         let stringIngredient = arrayIngredient.toString().replaceAll(',',' ').trim()
-        // let clean = stringIngredient.replaceAll(',',' ').trim()
-        // let clean = stringIngredient.replaceAll(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,'&&',,,,,,,,,,,,,'&&',,,,,,,,,,,,'&&',,,,,,,,,,,'&&',,,,,,,,,,'&&',,,,,,,,,'&&',,,,,,,,'&&',,,,,,,'&&',,,,,,'&&',,,,,'&&',,,,'&&',,,','')
-        // let clean2 = clean.replaceAll(',,'&&' ,',', ')
-        // arrayIngredient = clean.split('')
-        // console.log(arrayIngredient)
-        // for (let i = arrayIngredient.length - 1; i > -1; i--) {
-        //     (arrayIngredient[i] === null) ? arrayIngredient.splice(i,1) : ((arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false)
-        // }
         const id = drinkData.idDrink
         const name = drinkData.strDrink.toString().replaceAll(' ','-')
         const drinkDiv = document.getElementById(id)
         const drinkIngredients = document.createElement('div')
         const drinkInstructions = document.createElement('div')
+        drinkDiv.append(genericDiv)
         drinkIngredients.setAttribute('class', `ingredient-container`)
         drinkInstructions.setAttribute('class', `ingredient-container`)
-        // drinkIngredients.setAttribute('class', `ingredient-container ${name}`)
-        // drinkInstructions.setAttribute('class', `ingredient-container ${name}`)
-        // drinkInstructions.setAttribute('id',`${id}-instructions` )
         drinkDiv.append(drinkIngredients)
         drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
         const instructions = drinkData.strInstructions.toString().replaceAll(`<br>`,' ')
-
         drinkInstructions.innerText = instructions
 
         // Because I got a little annoyed... passion fruit on a drink with crown and frangelico...
@@ -112,64 +105,8 @@ const grabDrinkData = async (drinkID) => {
         worngPicture.innerText = 'Sorry this is not the picture of this drink...'
         worngPicture.style = 'display: flex; justify-content: center; align-content: center; background: black; color: white;'
         }
-// Trying to get ingredients to show...........
-        // const hoverName = document.getElementById(id)
-        // console.log(hoverName)
-        // console.log(name)
-        // hoverName.addEventListener('onmouseover', ( e => {
-        //     const toDisplay = document.getElementsByClassName(name) 
-        //     toDisplay.style.opacity = '0.85'
-        //     console.log(name)
-        // }))
-        // hoverName.addEventListener('onmouseenter',displayIngredients(name))
-        // hoverName.addEventListener('onmouseleave',hideIngredients(name))
 
     } catch (error) {
         console.error(error)
     }
-}
-
-// Trying to get ingredients to show...........
-// function displayIngredients(name) {
-//     const toDisplay = document.getElementsByClassName(name) 
-//     toDisplay.style.opacity = '0.85'
-//     console.log(name)
-// }
-
-// function hideIngredients(name) {
-//     const toHide = document.getElementsByClassName(name)
-//     toHide.style.opacity = '0'
-// } 
-
-// function hideIngredients(name) {
-//     const toHide = document.querySelectorAll(name)
-//     if(toHide.style = 'opacity: 0;') {
-//         toHide.style = 'opacity: 0.85'
-//     }else {
-//         toHide.style = 'opacity: 0;'
-//     }
-// }
-
-// const work = document.querySelector('#display-ingredients').value
-// console.log(work)
-// (work ===work.addEventListener('onclick', hideIngredients('.ingredient-container'))
-
-// const work = document.querySelectorAll('.ingredient-container')
-
-const work = document.getElementsByClassName('ingredient-container')
-
-// console.log(work)
-// work.addEventListener('mouseenter', function() {
-//     this.setAttribute('id','show-description');
-// });
-
-work.addEventListener("click",show)
-work.addEventListener("offclick",remove)
-
-function show() {
-    work.setAttribute('id','show-description');
-  }
-  
-function remove() {
-    work.removeAttribute('id')
 }
