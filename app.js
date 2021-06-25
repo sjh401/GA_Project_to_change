@@ -100,13 +100,16 @@ const grabDrinkData = async (drinkID) => {
         drinkDiv.append(drinkIngredients)
         drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
-        drinkInstructions.innerText = drinkData.strInstructions
+        const instructions = drinkData.strInstructions.toString().replaceAll(`<br>`,' ')
+
+        drinkInstructions.innerText = instructions
 
         // Because I got a little annoyed... passion fruit on a drink with crown and frangelico...
         const worngPicture = document.getElementById('17122')
+        if(worngPicture !== null) {
         worngPicture.innerText = 'Sorry this is not the picture of this drink...'
         worngPicture.style = 'display: flex; justify-content: center; align-content: center; background: black; color: white;'
-
+        }
 // Trying to get ingredients to show...........
         // const hoverName = document.getElementById(id)
         // console.log(hoverName)
