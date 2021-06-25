@@ -2,7 +2,8 @@
 // By Category - www.thecocktaildb.com/api/json/v1/1/filter.php?a=Non_Alcoholic
 // By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 
-const drinkFlex = document.querySelector('#results')
+
+const drinkFlex = document.querySelector('.results')
 const inputButton = document.querySelector('#ingredient-button')
 
 
@@ -25,7 +26,7 @@ const grabDrinks = async (ingredient) => {
                 drinkDiv.style.backgroundImage = backImage
                 // console.log(backImage)
                 drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
+                drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
@@ -44,7 +45,7 @@ const grabDrinks = async (ingredient) => {
                 drinkDiv.style.backgroundImage = backImage
                 // console.log(backImage)
                 drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                drinkName.setAttribute('style','display: flex; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
+                drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
@@ -78,43 +79,51 @@ const grabDrinkData = async (drinkID) => {
         const response = await axios.get(url)
         // console.log(response)
         const drinkData = response.data.drinks[0]
-        const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15, ...other} = drinkData
+        const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15} = drinkData
+        // let array = {1:`${strMeasure1 + strIngredient1}, `, 2:`${strMeasure2 + strIngredient2}, `, 3:`${strMeasure3 + strIngredient3}, `, 4:`${strMeasure4 + strIngredient4}, `, 5:`${strMeasure5 + strIngredient5}, `, 6:`${strMeasure6 + strIngredient6}, `, 7:`${strMeasure7 + strIngredient7}, `, 8:`${strIngredient8 + strMeasure8}, `, 9:`${strIngredient9 + strMeasure9}, `, 10:`${strIngredient10 + strMeasure10}, `, 11:`${strIngredient11 + strMeasure11}, `, 12:`${strMeasure12 + strIngredient12}, `, 13:`${strIngredient13 + strMeasure13}, `, 14:`${strMeasure14 + strIngredient14}, `, 15:`${strMeasure15 + strIngredient15}`}
         let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
-        let stringIngredient = arrayIngredient.toString()
-        let clean = stringIngredient.replaceAll(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,'&&',,,,,,,,,,,,,'&&',,,,,,,,,,,,'&&',,,,,,,,,,,'&&',,,,,,,,,,'&&',,,,,,,,,'&&',,,,,,,,'&&',,,,,,,'&&',,,,,,'&&',,,,,'&&',,,,'&&',,,','')
-        let clean2 = clean.replaceAll(',,'&&' ,',', ')
-        arrayIngredient = clean2.split(',')
+        let stringIngredient = arrayIngredient.toString().replaceAll(',',' ').trim()
+        // let clean = stringIngredient.replaceAll(',',' ').trim()
+        // let clean = stringIngredient.replaceAll(',,,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,,'&&',,,,,,,,,,,,,,'&&',,,,,,,,,,,,,'&&',,,,,,,,,,,,'&&',,,,,,,,,,,'&&',,,,,,,,,,'&&',,,,,,,,,'&&',,,,,,,,'&&',,,,,,,'&&',,,,,,'&&',,,,,'&&',,,,'&&',,,','')
+        // let clean2 = clean.replaceAll(',,'&&' ,',', ')
+        // arrayIngredient = clean.split('')
         // console.log(arrayIngredient)
         // for (let i = arrayIngredient.length - 1; i > -1; i--) {
-        //     (arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false
+        //     (arrayIngredient[i] === null) ? arrayIngredient.splice(i,1) : ((arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false)
         // }
         const id = drinkData.idDrink
         const drinkDiv = document.getElementById(`${id}`)
         const drinkIngredients = document.createElement('div')
         const drinkInstructions = document.createElement('div')
-        drinkInstructions.setAttribute('class', 'ingredient-container')
         drinkIngredients.setAttribute('class', 'ingredient-container')
+        drinkInstructions.setAttribute('class', 'ingredient-container')
+        drinkInstructions.setAttribute('id',`${id}-instructions` )
+        // drinkInstructions.setAttribute('style','display: none;')
         drinkDiv.append(drinkIngredients)
         drinkDiv.append(drinkInstructions)
-        drinkIngredients.innerText = arrayIngredient
+        drinkIngredients.innerText = stringIngredient
         drinkInstructions.innerText = drinkData.strInstructions
         // drinkDiv.setAttribute('onclick','hideIngredients()')
-        drinkDiv.setAttribute('onmouseover','displayIngredients()')
+        console.log(`${id}-instructions`)
+        return id
     } catch (error) {
         console.error(error)
     }
 }
 
-function displayIngredients(e) {
-    const ingredientContainer = document.querySelector('.ingredient-container')
-    ingredientContainer.setAttribute('style','display: flex;')
-    // e.preventDefault()
-}
 // function hideIngredients() {
 //     let ingredientContainer = document.querySelector('.ingredient-container')
 //     ingredientContainer.setAttribute('style','display: none;')
 
 // }
-
+drinkDiv.addEventListener('onclick',displayIngredients(`${id}-instructions`))
+function displayIngredients(id) {
+    const ingredientsContainer = document.getElementById(id)
+    if(ingredientsContainer.style.display === 'none') {
+        ingredientsContainer.style.display = 'display: flex; flex-flow: column wrap; background: #20201d; color: #fff;  padding: 5px;  opacity: 0.85; font-size: 1.5vh;'
+    } else {
+        ingredientsContainer.style.display ='none'
+    }
+}
 // document.querySelector(`.drink-container`).offclick = function () {hideIngredients()};
 // document.querySelector(`.drink-container`).onclick = function () {displayIngredients()};
