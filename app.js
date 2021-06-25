@@ -17,7 +17,7 @@ const grabDrinks = async (ingredient) => {
             const drinkData = response.data.drinks
             for(let i = 0; i < drinkData.length; i++) {
                 const drinkDiv = document.createElement('div')
-                const drinkName = document.createElement('form')
+                const drinkName = document.createElement('div')
                 drinkDiv.setAttribute('class', 'drink-container')
                 const backImage = `url(${drinkData[i].strDrinkThumb})`
                 drinkDiv.style.backgroundImage = backImage
