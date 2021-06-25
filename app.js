@@ -141,15 +141,35 @@ const grabDrinkData = async (drinkID) => {
 //     toHide.style.opacity = '0'
 // } 
 
-function hideIngredients(name) {
-    const toHide = document.querySelectorAll(name)
-    if(toHide.style = 'opacity: 0;') {
-        toHide.style = 'opacity: 0.85'
-    }else {
-        toHide.style = 'opacity: 0;'
-    }
-}
+// function hideIngredients(name) {
+//     const toHide = document.querySelectorAll(name)
+//     if(toHide.style = 'opacity: 0;') {
+//         toHide.style = 'opacity: 0.85'
+//     }else {
+//         toHide.style = 'opacity: 0;'
+//     }
+// }
 
-const work = document.querySelector('#display-ingredients').value
-console.log(work)
+// const work = document.querySelector('#display-ingredients').value
+// console.log(work)
 // (work ===work.addEventListener('onclick', hideIngredients('.ingredient-container'))
+
+// const work = document.querySelectorAll('.ingredient-container')
+
+const work = document.getElementsByClassName('ingredient-container')
+
+// console.log(work)
+// work.addEventListener('mouseenter', function() {
+//     this.setAttribute('id','show-description');
+// });
+
+work.addEventListener("click",show)
+work.addEventListener("offclick",remove)
+
+function show() {
+    work.setAttribute('id','show-description');
+  }
+  
+function remove() {
+    work.removeAttribute('id')
+}

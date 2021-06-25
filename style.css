@@ -3,7 +3,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-flow: column;
-    margin: 0 0
+    margin: 0 0;
+    font-family: 'Cardo', serif;
 }
 header{
     order: 0;
@@ -63,14 +64,18 @@ p {
     background: #20201d; 
     color: #fff; 
     padding: 5px; 
-    opacity: 0.85; 
+    opacity: 0; 
     font-size: 1.5vh;
     max-height: 10em;
     overflow: scroll;
     
 }
+#show-description {
+    opacity: 1;
+}
 /* ids */
 #pageTitle {
+    font-family: 'Cinzel', serif;
     height: 25vh;
     display: flex;
     flex-flow: column wrap;
@@ -82,6 +87,7 @@ p {
     background-repeat: no-repeat;
     margin: 0 0 5px 0; 
 }
+
 #ingredient-button {
     font-size: 100%;
     height: 5vh;
@@ -92,7 +98,6 @@ p {
     max-height: 75px;
     border-radius: 10%;
     border-color: rgba(0, 0, 0, 0.5);
-    
 }
 #ingredient-box {
     font-size: 100%;
