@@ -70,6 +70,7 @@ button.addEventListener('click', (e => {
     document.querySelector('#ingredient-box').value = ''
 }))
 
+
 const grabDrinkData = async (drinkID) => {
     try {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
@@ -89,31 +90,36 @@ const grabDrinkData = async (drinkID) => {
         //     (arrayIngredient[i] === null) ? arrayIngredient.splice(i,1) : ((arrayIngredient[i] === "") ? arrayIngredient.splice(i,1) : false)
         // }
         const id = drinkData.idDrink
-        const drinkDiv = document.getElementById(`${id}`)
+        const name = drinkData.strDrink.toString().replaceAll(' ','-')
+        const drinkDiv = document.getElementById(id)
         const drinkIngredients = document.createElement('div')
         const drinkInstructions = document.createElement('div')
-        drinkIngredients.setAttribute('class', 'ingredient-container')
-        drinkInstructions.setAttribute('class', 'ingredient-container')
-        drinkInstructions.setAttribute('id',`${id}-instructions` )
+        drinkIngredients.setAttribute('class', `ingredient-container ${name}`)
+        drinkInstructions.setAttribute('class', `ingredient-container ${name}`)
+        // drinkInstructions.setAttribute('id',`${id}-instructions` )
         drinkDiv.append(drinkIngredients)
         drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
         drinkInstructions.innerText = drinkData.strInstructions
-        const drinkName = document.querySelector(`'.${id}'`)
-        drinkName.addEventListener('mouseenter',displayIngredients(`'.${id}'`))
-        drinkName.addEventListener('mouseleave',hideIngredients(`'.${id}'`))
+        const hoverName = document.getElementById(id)
+        hoverName.addEventListener('onmouseenter',displayIngredients(name))
+        // hoverName.addEventListener('onmouseleave',hideIngredients(name))
 
     } catch (error) {
         console.error(error)
     }
 }
 
-function displayIngredients(id) {
-    let ingredientContainer = document.querySelector(id)
-    ingredientContainer.setAttribute('style','opacity: 0.85;')
-}
 
-function hideIngredients(id) {
-    let ingredientContainer = document.querySelector(id)
-    ingredientContainer.setAttribute('style','opacity: 0;')
-}
+// function displayIngredients(name) {
+//     const toDisplay = document.getElementsByClassName(name) 
+//     toDisplay.style.opacity = '0.85'
+//     console.log(name)
+// }
+
+// function hideIngredients(name) {
+//     const toHide = document.getElementsByClassName(name)
+//     toHide.style.opacity = '0'
+// } 
+
+

@@ -58,7 +58,7 @@ h2 {
     background: #20201d; 
     color: #fff; 
     padding: 5px; 
-    opacity: 0.85; 
+    opacity: 0; 
     font-size: 1.5vh;
 }
 /* ids */
@@ -71,6 +71,5 @@ h2 {
     background-size: 100vw 30vh;
     background-origin: border-box;
     background-repeat: no-repeat;
-
     margin: 5px 0; 
 }
