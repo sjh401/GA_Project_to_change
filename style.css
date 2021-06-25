@@ -66,16 +66,16 @@ p {
     padding: 5px; 
     opacity: 0.85; 
     font-size: 1.5vh;
-    max-height: 10em;
+    max-height: 8em;
     overflow: scroll;
     
 }
-
-.hide {
-    display: none;
+.container {
+    opacity: 0;
 }
-
-
+.container:hover {
+    opacity: 0.85;
+}
 #show-description {
     opacity: 1;
 }

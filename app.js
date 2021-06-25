@@ -1,6 +1,6 @@
 const drinkFlex = document.querySelector('.results')
 const inputButton = document.querySelector('#ingredient-button')
-const button = document.querySelector('#ingredient-button')
+
 
 const grabDrinks = async (ingredient) => {
     try {
@@ -53,28 +53,37 @@ function removeResults(node) {
         node.removeChild(node.firstChild)
     }
 }
-
+const button = document.querySelector('#ingredient-button')
 button.addEventListener('click', (e => {
     e.preventDefault() 
     removeResults(drinkFlex)
     const ingredient = document.querySelector('#ingredient-box').value
     grabDrinks(ingredient)
     document.querySelector('#ingredient-box').value = ''
+    // const pageTitle = document.querySelector('#pageTitle')
     return ingredient
 }))
 
-const generic = document.querySelector('.drink-container')
-
-generic.addEventListener('mouseover', () => {
-    drinkDiv.classList.toggle('hide')
-    drinkInstructions.classList.toggle('hide')
-})
-
-// const ingredient = document.querySelector('#ingredient-box').value
-// const pageTitle = document.querySelector('#pageTitle')
-// if (ingredient === 'vodka') {
+// const generic = document.querySelector('.drink-container')
+// generic.addEventListener('mouseover', () => {
+//     drinkIngredients.classList.toggle('show')
+//     drinkInstructions.classList.toggle('show')
+// })
+// if (ingredient === 'vodka' || ingredient === 'Vodka' ) {
 //     pageTitle.backgroundImage = "url('https://i.imgur.com/vETgiD8.jpg?1')"
-// } 
+// } else if (ifgredient === 'gin' || ingredient === 'Gin' ) {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/bkLTXN2.jpg?1')"
+// } else if (ingredient === 'rum' || ingredient === 'Rum' ) {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/jSbXZ0k.jpg?1')"
+// } else if (ingredient === 'tequila' || ingredient === 'Tequila' ) {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/PiyFOPV.jpg?1')"
+// } else if (ingredient === 'bourbon' || ingredient === 'Bourbon' ) {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/MUQwimK.jpg')"
+// } else if (ingredient === 'whisky' || ingredient === 'Whisky' ) {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/clvnT0B.jpg?1')"
+// } else if (ingredient === 'scotch' || ingredient === 'Scotch' ) {
+//     pageTitle.backgroundImage = "url('https://i.imgur.com/clvnT0B.jpg?1')"
+// }
 
 const grabDrinkData = async (drinkID) => {
     try {
@@ -86,15 +95,20 @@ const grabDrinkData = async (drinkID) => {
         let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
         let stringIngredient = arrayIngredient.toString().replaceAll(',',' ').trim()
         const id = drinkData.idDrink
-        const name = drinkData.strDrink.toString().replaceAll(' ','-')
+        // const name = drinkData.strDrink.toString().replaceAll(' ','-')
         const drinkDiv = document.getElementById(id)
         const drinkIngredients = document.createElement('div')
         const drinkInstructions = document.createElement('div')
-        drinkDiv.append(genericDiv)
+        const drinkIngInst = document.createElement('div')
+        drinkIngInst.setAttribute('class', `container`)
+        drinkDiv.append(drinkIngInst)
         drinkIngredients.setAttribute('class', `ingredient-container`)
         drinkInstructions.setAttribute('class', `ingredient-container`)
-        drinkDiv.append(drinkIngredients)
-        drinkDiv.append(drinkInstructions)
+        // drinkIngredients.setAttribute('class', `ingredient-container ${name}`)
+        // drinkInstructions.setAttribute('class', `ingredient-container ${name}`)
+        // drinkInstructions.setAttribute('id',`${id}-instructions` )
+        drinkIngInst.append(drinkIngredients)
+        drinkIngInst.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
         const instructions = drinkData.strInstructions.toString().replaceAll(`<br>`,' ')
         drinkInstructions.innerText = instructions
