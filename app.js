@@ -24,7 +24,7 @@ const grabDrinks = async (ingredient) => {
                 // console.log(backImage)
                 drinkDiv.setAttribute('id',drinkData[i].idDrink)
                 drinkName.setAttribute('class', drinkData[i].idDrink)
-                drinkName.setAttribute('style','text-align: left; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
+                drinkName.setAttribute('style','text-align: left; background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
@@ -42,7 +42,7 @@ const grabDrinks = async (ingredient) => {
                     drinkDiv.style.backgroundImage = backImage
                     // console.log(backImage)
                     drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                    drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
+                    drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
                     drinkName.innerText = drinkData[i].strDrink
                     drinkFlex.appendChild(drinkDiv)
                     drinkDiv.appendChild(drinkName)
@@ -101,8 +101,22 @@ const grabDrinkData = async (drinkID) => {
         drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
         drinkInstructions.innerText = drinkData.strInstructions
-        const hoverName = document.getElementById(id)
-        hoverName.addEventListener('onmouseenter',displayIngredients(name))
+
+        // Because I got a little annoyed... passion fruit on a drink with crown and frangelico...
+        const worngPicture = document.getElementById('17122')
+        worngPicture.innerText = 'Sorry this is not the picture of this drink...'
+        worngPicture.style = 'display: flex; justify-content: center; align-content: center; background: black; color: white;'
+
+// Trying to get ingredients to show...........
+        // const hoverName = document.getElementById(id)
+        // console.log(hoverName)
+        // console.log(name)
+        // hoverName.addEventListener('onmouseover', ( e => {
+        //     const toDisplay = document.getElementsByClassName(name) 
+        //     toDisplay.style.opacity = '0.85'
+        //     console.log(name)
+        // }))
+        // hoverName.addEventListener('onmouseenter',displayIngredients(name))
         // hoverName.addEventListener('onmouseleave',hideIngredients(name))
 
     } catch (error) {
@@ -110,7 +124,7 @@ const grabDrinkData = async (drinkID) => {
     }
 }
 
-
+// Trying to get ingredients to show...........
 // function displayIngredients(name) {
 //     const toDisplay = document.getElementsByClassName(name) 
 //     toDisplay.style.opacity = '0.85'
@@ -121,5 +135,4 @@ const grabDrinkData = async (drinkID) => {
 //     const toHide = document.getElementsByClassName(name)
 //     toHide.style.opacity = '0'
 // } 
-
 
