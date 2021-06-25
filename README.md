@@ -75,16 +75,21 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 |	Styling Flexbox Results | H | 3hrs | 3hrs | 14hrs |
 | Results Styling | H | 3hrs| 2hrs | 16hrs |
 | Onclick Result Responsiveness | H | 3hrs | 3~hrs | ongoing |
-|	Background Layout & Arrangement | H	| 3hrs |	|	|
+|	Background Layout & Arrangement | H	| 3hrs | 2.5hrs	| 	|
 |	Favorite Saver & Styling | M | 2hrs	|	|	|
-|	Functionality & Responsiveness Review | H | 3hrs |	|	|
+|	Functionality & Responsiveness Review | H | 3hrs | 4hrs	|	|
 | CSS Fonts & Button Styling | M | 2.5hrs |	|	|
 | Presentation Final Check | H | 2hrs |	|	|
 | Total | H | 32.5hrs|  |  |
 
 ## Code Snippet
 
+Getting rid of null values. Not sure if it's best way or if there's a trick to doing it, but I thought it turned out alright.
+
+const drinkData = response.data.drinks[0]
+const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15} = drinkData
+let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
+let stringIngredient = arrayIngredient.toString().replaceAll(',',' ').trim()
 
 ## Change Log
-Just left the drink results number at default, originally thought I'd be getting hundreds results per 'big' search, so no need for 'no results formatting' image.
-
+Just left the drink results number at default, originally thought I'd be getting hundreds results per 'big' search, so no need for 'no results formatting' image. Added return to top link at bottom or page.

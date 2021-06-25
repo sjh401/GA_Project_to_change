@@ -94,8 +94,10 @@ const grabDrinkData = async (drinkID) => {
         const drinkDiv = document.getElementById(id)
         const drinkIngredients = document.createElement('div')
         const drinkInstructions = document.createElement('div')
-        drinkIngredients.setAttribute('class', `ingredient-container ${name}`)
-        drinkInstructions.setAttribute('class', `ingredient-container ${name}`)
+        drinkIngredients.setAttribute('class', `ingredient-container`)
+        drinkInstructions.setAttribute('class', `ingredient-container`)
+        // drinkIngredients.setAttribute('class', `ingredient-container ${name}`)
+        // drinkInstructions.setAttribute('class', `ingredient-container ${name}`)
         // drinkInstructions.setAttribute('id',`${id}-instructions` )
         drinkDiv.append(drinkIngredients)
         drinkDiv.append(drinkInstructions)
@@ -139,3 +141,15 @@ const grabDrinkData = async (drinkID) => {
 //     toHide.style.opacity = '0'
 // } 
 
+function hideIngredients(name) {
+    const toHide = document.querySelectorAll(name)
+    if(toHide.style = 'opacity: 0;') {
+        toHide.style = 'opacity: 0.85'
+    }else {
+        toHide.style = 'opacity: 0;'
+    }
+}
+
+const work = document.querySelector('#display-ingredients').value
+console.log(work)
+// (work ===work.addEventListener('onclick', hideIngredients('.ingredient-container'))
