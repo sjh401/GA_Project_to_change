@@ -73,8 +73,8 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 | Filtering Alc vs Non | H | 3hrs | 3hrs | 7hrs |
 |	Displaying Results to DOM| H | 3hrs | 4hrs | 11hrs |
 |	Styling Flexbox Results | H | 3hrs | 3hrs | 14hrs |
-| Results Styling | H | 3hrs| | |
-| Onclick Result Responsiveness | H | 3hrs |	|	|
+| Results Styling | H | 3hrs| 2hrs | 16hrs |
+| Onclick Result Responsiveness | H | 3hrs | 3~hrs | ongoing |
 |	Background Layout & Arrangement | H	| 3hrs |	|	|
 |	Favorite Saver & Styling | M | 2hrs	|	|	|
 |	Functionality & Responsiveness Review | H | 3hrs |	|	|
@@ -86,4 +86,5 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 
 
 ## Change Log
+Just left the drink results number at default, originally thought I'd be getting hundreds results per 'big' search, so no need for 'no results formatting' image.
 

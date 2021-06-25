@@ -23,6 +23,7 @@ a {
 }
 h1 {
     font-size: 12vh;
+    color: #fff;
 }
 h2 {
     text-align: left;
@@ -57,7 +58,7 @@ h2 {
     background: #20201d; 
     color: #fff; 
     padding: 5px; 
-    opacity: 0.25; 
+    opacity: 0.85; 
     font-size: 1.5vh;
 }
 /* ids */
@@ -66,5 +67,10 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-image: ; */
+    background-image: url('https://i.imgur.com/CjvQPNL.jpg?2');
+    background-size: 100vw 25vh;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+
+    margin: 5px 0; 
 }

@@ -17,13 +17,14 @@ const grabDrinks = async (ingredient) => {
             const drinkData = response.data.drinks
             for(let i = 0; i < drinkData.length; i++) {
                 const drinkDiv = document.createElement('div')
-                const drinkName = document.createElement('div')
+                const drinkName = document.createElement('form')
                 drinkDiv.setAttribute('class', 'drink-container')
                 const backImage = `url(${drinkData[i].strDrinkThumb})`
                 drinkDiv.style.backgroundImage = backImage
                 // console.log(backImage)
                 drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
+                drinkName.setAttribute('class', drinkData[i].idDrink)
+                drinkName.setAttribute('style','text-align: left; background: #20201d; color: #fff; padding: 5px; opacity: 0.85; font-size: 2.5vh;')
                 drinkName.innerText = drinkData[i].strDrink
                 drinkFlex.appendChild(drinkDiv)
                 drinkDiv.appendChild(drinkName)
@@ -98,16 +99,17 @@ const grabDrinkData = async (drinkID) => {
         drinkDiv.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
         drinkInstructions.innerText = drinkData.strInstructions
-        // drinkDiv.setAttribute('onclick','hideIngredients()')
-        // console.log(`${id}-instructions`)
+        // const drinkName = document.querySelector(`'.${id}'`)
+        // drinkName.addEventListener('onmouseover',displayIngredients(`'.${id}'`))
+        // console.log(`'.${id}'`)
     } catch (error) {
         console.error(error)
     }
 }
 
-// function hideIngredients() {
-//     let ingredientContainer = document.querySelector('.ingredient-container')
-//     ingredientContainer.setAttribute('style','display: none;')
+// function displayIngredients(id) {
+//     let ingredientContainer = document.querySelector(id)
+//     ingredientContainer.setAttribute('style','opacity: 0.85;')
 // }
 
 // const drinkIngredients = document.querySelectorAll('.ingredient-container')
@@ -118,3 +120,4 @@ const grabDrinkData = async (drinkID) => {
 
 // document.querySelector(`.drink-container`).offclick = function () {hideIngredients()};
 // document.querySelector(`.ingredient-container`).onmouseover = function () {displayIngredients()};
+
