@@ -23,10 +23,6 @@ footer {
 a {
     color: #000;
 }
-h1 {
-    font-size: 12vh;
-    color: #fff;
-}
 div {
     font-size: 2.5vh;
 }
@@ -80,14 +76,17 @@ p {
     opacity: 1;
 }
 /* ids */
-#pageTitle {
+#page-title {
     font-family: 'Cinzel', serif;
+    font-size: 10vh;
+    color: #fff;
     height: 25vh;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
     background-image: url('https://i.imgur.com/CjvQPNL.jpg?2');
+    background-color: black;
     background-size: 100vw 30vh;
     background-origin: border-box;
     background-repeat: no-repeat;
