@@ -40,18 +40,13 @@ const grabDrinks = async (ingredient) => {
                     drinkFlex.appendChild(drinkDiv)
                     drinkDiv.appendChild(drinkName)
                     grabDrinkData(drinkData[i].idDrink)
-            }
+                }
             }
     } catch (error) {
         console.error(error)
     }
 }
 
-function removeResults(node) {
-    while(node.firstChild) {
-        node.removeChild(node.firstChild)
-    }
-}
 const button = document.querySelector('#ingredient-button')
 button.addEventListener('click', (e => {
     e.preventDefault() 
@@ -59,16 +54,26 @@ button.addEventListener('click', (e => {
     const ingredient = document.querySelector('#ingredient-box').value
     console.log(ingredient)
     grabDrinks(ingredient)
+    backgroundChange(ingredient)
+    document.querySelector('#ingredient-box').value = ''
+}))
+
+function removeResults(node) {
+    while(node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+function backgroundChange(ingredient) {
     const pageTitle = document.querySelector('#page-title')
     if (ingredient === 'vodka' || ingredient === 'Vodka' ) {
-        pageTitle.style.backgroundImage = "url(https://i.imgur.com/vETgiD8.jpg?1)"
+        pageTitle.style.backgroundImage = "url(https://i.imgur.com/vETgiD8.jpg?2)"
     } else if (ingredient === 'gin' || ingredient === 'Gin' ) {
         pageTitle.style.backgroundImage = "url(https://i.imgur.com/bkLTXN2.jpg?1)"
     } else if (ingredient === 'rum' || ingredient === 'Rum' ) {
         pageTitle.style.backgroundImage = "url(https://i.imgur.com/Xkd71dG.jpg?2)"
     } else if (ingredient === 'tequila' || ingredient === 'Tequila' ) {
-        pageTitle.style.backgroundImage = "url(https://i.imgur.com/PiyFOPV.jpg?2)"
-        pageTitle.style.color = '#006600'
+        pageTitle.style.backgroundImage = "url(https://i.imgur.com/ncyLNU8.jpg?2)"
     } else if (ingredient === 'bourbon' || ingredient === 'Bourbon' ) {
         pageTitle.style.backgroundImage = "url(https://i.imgur.com/QqEM4tX.jpg?1)"
     } else if (ingredient === 'whisky' || ingredient === 'Whisky' ) {
@@ -78,9 +83,7 @@ button.addEventListener('click', (e => {
     } else {
         pageTitle.style.backgroundImage = "url(https://i.imgur.com/CjvQPNL.jpg?2)"
     }
-    console.log(pageTitle.backgroundImage)
-    document.querySelector('#ingredient-box').value = ''
-}))
+}
 
 const grabDrinkData = async (drinkID) => {
     try {
@@ -117,3 +120,44 @@ const grabDrinkData = async (drinkID) => {
         console.error(error)
     }
 }
+
+// clear last item
+// Storage.removeItem(key)
+
+// clear all local storage
+// Storage.clear()
+
+
+// test for storage
+// function storageAvailable(type) {
+//     let storage;
+//     try {
+//         storage = window[type];
+//         let x = '__storage_test__';
+//         storage.setItem(x, x);
+//         storage.removeItem(x);
+//         return true;
+//     }
+//     catch(e) {
+//         return e instanceof DOMException && (
+//             // everything except Firefox
+//             e.code === 22 ||
+//             // Firefox
+//             e.code === 1014 ||
+//             // test name field too, because code might not be present
+//             // everything except Firefox
+//             e.name === 'QuotaExceededError' ||
+//             // Firefox
+//             e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+//             // acknowledge QuotaExceededError only if there's something already stored
+//             (storage && storage.length !== 0);
+//     }
+// }
+// if (storageAvailable('localStorage')) {
+//   // Yippee! We can use localStorage awesomeness
+//   console.log('yay')
+// }
+// else {
+//   // Too bad, no localStorage for us
+//   console.log('nope')
+// }

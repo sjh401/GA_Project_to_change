@@ -77,9 +77,9 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 | Onclick Result Responsiveness | H | 3hrs | 3.5hrs | 19.5hrs |
 | Background Layout & Arrangement | H | 3hrs | 2.5hrs | 22hrs |
 | Functionality & Responsiveness Review | H | 3hrs | 4hrs | 26hrs |
-| CSS Fonts & Button Styling | M | 2.5hrs |	2hrs | 28hrs |
-| Favorite Saver & Styling | M | 2hrs |	| |
-| Presentation Final Check | H | 2hrs |	| |
+| CSS Fonts & Button Styling | M | 2.5hrs |	3hrs | 29hrs |
+| Favorite Saver & Styling | M | 2hrs |	X | X |
+| Presentation Final Check | H | 2hrs | 3hrs | 32hrs |
 | Total | H | 32.5hrs|  |  |
 
 ## Code Snippet
