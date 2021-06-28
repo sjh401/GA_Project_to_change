@@ -4,7 +4,7 @@
 
 ## Project Name
 
-What Should You Drink? - file:///Users/stephen/Desktop/General_Assembly/sei/penguins/unit_1/project_1/What_Should_You_Drink/index.html?#pageTitle
+What Should You Drink? - 
 
 ## Project Description
 
@@ -52,10 +52,10 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 |---|---| ---|
 |June 22| Prompt / Wireframes / Priority Matrix / Timeframes | Complete
 |June 22| Project Approval / Core Application Structure (HTML, CSS, etc.) | Complete
-|June 23| Pseudocode / actual code | Incomplete
-|June 24| Initial Clickable Model  | Incomplete
-|June 25| MVP | Incomplete
-|June 28| Presentations | Incomplete
+|June 23| Pseudocode / actual code | Complete
+|June 24| Initial Clickable Model  | Complete
+|June 25| MVP | Complete
+|June 28| Presentations | Complete
 
 ## Priority Matrix
 
@@ -80,7 +80,7 @@ By Drink ID - www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11147
 | CSS Fonts & Button Styling | M | 2.5hrs |	3hrs | 29hrs |
 | Favorite Saver & Styling | M | 2hrs |	X | X |
 | Presentation Final Check | H | 2hrs | 3hrs | 32hrs |
-| Total | H | 32.5hrs|  |  |
+| Total | H | 32.5hrs|  | 32hrs |
 
 ## Code Snippet
 
