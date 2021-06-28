@@ -92,4 +92,4 @@ Getting rid of null values. Not sure if it's best way or if there's a trick to d
 - let stringIngredient = arrayIngredient.toString().replaceAll(',',' ').trim()
 
 ## Change Log
-Just left the drink results number at default, originally thought I'd be getting hundreds results per 'big' search, so no need for 'no results formatting' image. Added return to top link at bottom or page.
+Just left the drink results number at default, originally thought I'd be getting hundreds results per 'big' search, so no need for 'no results formatting' image. Added return to top link at bottom or page and unit conversions.

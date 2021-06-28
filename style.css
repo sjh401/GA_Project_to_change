@@ -11,13 +11,14 @@ header{
 }
 main {
     order: 0;
-    min-height: 65vh;
+    min-height: 60vh;
 }
 footer {
     display: flex;
-    /* position: absolute; */
+    flex-flow: column;
     width: 100%;
     justify-content: center;
+    align-items: center;
     order: 1;
 }
 a {
@@ -29,6 +30,7 @@ div {
 p {
     font-size: 2vh;
 }
+
 /* class */
 .ingredients {
     display: flex;
@@ -48,7 +50,6 @@ p {
 .drink-container {
     display: flex;
     flex-flow: column wrap;
-    /* border: 5px solid  rgba(0, 0, 0, 0.75); */
     height: 30vh;
     width: 30vh;
     margin: 20px;
@@ -66,7 +67,6 @@ p {
     font-size: 1.5vh;
     max-height: 8em;
     overflow: scroll;
-    
 }
 .container {
     opacity: 0;
@@ -74,9 +74,7 @@ p {
 .container:hover {
     opacity: 0.85;
 }
-#show-description {
-    opacity: 1;
-}
+
 /* ids */
 #page-title {
     font-family: 'Cinzel', serif;
@@ -94,18 +92,22 @@ p {
     background-repeat: no-repeat;
     margin: 0 0 5px 0; 
 }
-
 #ingredient-button {
     font-size: 100%;
     height: 5vh;
     width: 5vw;
+    background-image: url('https://i.imgur.com/rh4LfDlt.jpg?1');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 75%;
     min-width: 100px;
     min-height: 25px;
     max-width: 150px;
     max-height: 75px;
     border-radius: 10%;
     border-color: rgba(0, 0, 0, 0.5);
-    /* align-content: baseline */
+    color: rgba(255, 255, 255, 0);
 }
 #ingredient-box {
     font-size: 100%;
@@ -161,12 +163,10 @@ p {
         min-height: 10px;
         max-width: 300px;
         max-height: 75px;
-
     }
     #page-title{
         height: 25vh;
         background-size: auto 25vh;
         background-repeat: repeat;
     }
-
 }
