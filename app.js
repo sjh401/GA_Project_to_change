@@ -1,5 +1,5 @@
 const drinkFlex = document.querySelector('.results')
-// const inputButton = document.querySelector('#ingredient-button')
+const inputButton = document.querySelector('#ingredient-button')
 
 const grabDrinks = async (ingredient) => {
     try {
@@ -8,17 +8,6 @@ const grabDrinks = async (ingredient) => {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
             const response = await axios.get(url)
             drinkLoop(response)
-        // } else if (nonAlc.checked === false)) {
-            // for the in statement under 21
-        //     
-        //     
-        //     const age = 
-        // 
-        //     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic`
-        //     const response = await axios.get(url)
-        //     const under21 = document.querySelector('#under-21')
-        //     under21.innterText = `These are all non-alcoholic drinks, try again in ${ageLeft} days. Enjoy!`
-        //     drinkLoop(response)
             } else{
                 const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic`
                 const response = await axios.get(url)
@@ -37,10 +26,8 @@ function drinkLoop (response) {
         drinkDiv.setAttribute('class', 'drink-container')
         const backImage = `url(${drinkData[i].strDrinkThumb})`
         drinkDiv.style.backgroundImage = backImage
-        // console.log(backImage)
         drinkDiv.setAttribute('id',drinkData[i].idDrink)
-        drinkName.setAttribute('class', drinkData[i].idDrink)
-        drinkName.setAttribute('style','text-align: left; background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
+        drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
         drinkName.innerText = drinkData[i].strDrink
         drinkFlex.appendChild(drinkDiv)
         drinkDiv.appendChild(drinkName)
@@ -90,7 +77,6 @@ const grabDrinkData = async (drinkID) => {
     try {
         const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinkID}`
         const response = await axios.get(url)
-        // console.log(response)
         const drinkData = response.data.drinks[0]
         const {strIngredient1, strIngredient2, strIngredient3, strIngredient4, strIngredient5, strIngredient6, strIngredient7, strIngredient8, strIngredient9, strIngredient10, strIngredient11, strIngredient12, strIngredient13, strIngredient14, strIngredient15, strMeasure1, strMeasure2, strMeasure3, strMeasure4, strMeasure5, strMeasure6, strMeasure7, strMeasure8, strMeasure9, strMeasure10, strMeasure11, strMeasure12, strMeasure13, strMeasure14, strMeasure15} = drinkData
         let arrayIngredient = [strMeasure1, strIngredient1, strMeasure2, strIngredient2, strMeasure3, strIngredient3, strMeasure4, strIngredient4, strMeasure5, strIngredient5, strMeasure6, strIngredient6, strMeasure7, strIngredient7, strIngredient8, strMeasure8, strIngredient9, strMeasure9, strIngredient10, strMeasure10, strIngredient11, strMeasure11, strMeasure12, strIngredient12, strIngredient13, strMeasure13, strMeasure14, strIngredient14, strMeasure15, strIngredient15]
@@ -107,7 +93,7 @@ const grabDrinkData = async (drinkID) => {
         drinkIngInst.append(drinkIngredients)
         drinkIngInst.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
-        const instructions = drinkData.strInstructions.toString()
+        const instructions = drinkData.strInstructions.toString().replaceAll(`<br>`,' ')
         drinkInstructions.innerText = instructions
 
         // Because I got a little annoyed... passion fruit on a drink with crown and frangelico...
@@ -121,44 +107,3 @@ const grabDrinkData = async (drinkID) => {
         console.error(error)
     }
 }
-
-// clear last item
-// Storage.removeItem(key)
-
-// clear all local storage
-// Storage.clear()
-
-
-// test for storage
-// function storageAvailable(type) {
-//     let storage;
-//     try {
-//         storage = window[type];
-//         let x = '__storage_test__';
-//         storage.setItem(x, x);
-//         storage.removeItem(x);
-//         return true;
-//     }
-//     catch(e) {
-//         return e instanceof DOMException && (
-//             // everything except Firefox
-//             e.code === 22 ||
-//             // Firefox
-//             e.code === 1014 ||
-//             // test name field too, because code might not be present
-//             // everything except Firefox
-//             e.name === 'QuotaExceededError' ||
-//             // Firefox
-//             e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-//             // acknowledge QuotaExceededError only if there's something already stored
-//             (storage && storage.length !== 0);
-//     }
-// }
-// if (storageAvailable('localStorage')) {
-//   // Yippee! We can use localStorage awesomeness
-//   console.log('yay')
-// }
-// else {
-//   // Too bad, no localStorage for us
-//   console.log('nope')
-// }
