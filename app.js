@@ -1,5 +1,5 @@
 const drinkFlex = document.querySelector('.results')
-const inputButton = document.querySelector('#ingredient-button')
+// const inputButton = document.querySelector('#ingredient-button')
 
 const grabDrinks = async (ingredient) => {
     try {
@@ -7,43 +7,44 @@ const grabDrinks = async (ingredient) => {
         if(nonAlc.checked === false) {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
             const response = await axios.get(url)
-            const drinkData = response.data.drinks
-            for(let i = 0; i < drinkData.length; i++) {
-                const drinkDiv = document.createElement('div')
-                const drinkName = document.createElement('div')
-                drinkDiv.setAttribute('class', 'drink-container')
-                const backImage = `url(${drinkData[i].strDrinkThumb})`
-                drinkDiv.style.backgroundImage = backImage
-                // console.log(backImage)
-                drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                drinkName.setAttribute('class', drinkData[i].idDrink)
-                drinkName.setAttribute('style','text-align: left; background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
-                drinkName.innerText = drinkData[i].strDrink
-                drinkFlex.appendChild(drinkDiv)
-                drinkDiv.appendChild(drinkName)
-                grabDrinkData(drinkData[i].idDrink)
-                }
+            drinkLoop(response)
+        // } else if (nonAlc.checked === false)) {
+            // for the in statement under 21
+        //     
+        //     
+        //     const age = 
+        // 
+        //     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic`
+        //     const response = await axios.get(url)
+        //     const under21 = document.querySelector('#under-21')
+        //     under21.innterText = `These are all non-alcoholic drinks, try again in ${ageLeft} days. Enjoy!`
+        //     drinkLoop(response)
             } else{
                 const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic`
                 const response = await axios.get(url)
-                const drinkData = response.data.drinks
-                for(let i = 0; i < drinkData.length; i++) {
-                    const drinkDiv = document.createElement('div')
-                    const drinkName = document.createElement('div')
-                    drinkDiv.setAttribute('class', 'drink-container')
-                    const backImage = `url(${drinkData[i].strDrinkThumb})`
-                    drinkDiv.style.backgroundImage = backImage
-                    // console.log(backImage)
-                    drinkDiv.setAttribute('id',drinkData[i].idDrink)
-                    drinkName.setAttribute('style','background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
-                    drinkName.innerText = drinkData[i].strDrink
-                    drinkFlex.appendChild(drinkDiv)
-                    drinkDiv.appendChild(drinkName)
-                    grabDrinkData(drinkData[i].idDrink)
-                }
+                drinkLoop(response)
             }
     } catch (error) {
         console.error(error)
+    }
+}
+
+function drinkLoop (response) {
+    const drinkData = response.data.drinks
+    for(let i = 0; i < drinkData.length; i++) {
+        const drinkDiv = document.createElement('div')
+        const drinkName = document.createElement('div')
+        drinkDiv.setAttribute('class', 'drink-container')
+        const backImage = `url(${drinkData[i].strDrinkThumb})`
+        drinkDiv.style.backgroundImage = backImage
+        // console.log(backImage)
+        drinkDiv.setAttribute('id',drinkData[i].idDrink)
+        drinkName.setAttribute('class', drinkData[i].idDrink)
+        drinkName.setAttribute('style','text-align: left; background: #20201d; color: #fff; padding: 5px; opacity: 0.85;')
+        drinkName.innerText = drinkData[i].strDrink
+        drinkFlex.appendChild(drinkDiv)
+        drinkDiv.appendChild(drinkName)
+        grabDrinkData(drinkData[i].idDrink)
     }
 }
 
@@ -106,7 +107,7 @@ const grabDrinkData = async (drinkID) => {
         drinkIngInst.append(drinkIngredients)
         drinkIngInst.append(drinkInstructions)
         drinkIngredients.innerText = stringIngredient
-        const instructions = drinkData.strInstructions.toString().replaceAll(`<br>`,' ')
+        const instructions = drinkData.strInstructions.toString()
         drinkInstructions.innerText = instructions
 
         // Because I got a little annoyed... passion fruit on a drink with crown and frangelico...
