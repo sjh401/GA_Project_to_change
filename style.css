@@ -85,6 +85,21 @@ p {
 } */
 
 /* ids */
+#skip {
+    display: inline-block !important;
+    left: -9999px;
+    overflow: hidden;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    z-index: 50000 !important;
+}
+#skip:focus {
+    top: auto;
+    left: 0px;
+    width: auto;
+    height: auto;
+}
 #page-title {
     z-index: 1;
     font-family: 'Cinzel', serif;

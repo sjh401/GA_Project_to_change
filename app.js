@@ -85,9 +85,13 @@ function revealRecipe () {
 
 submitButton.addEventListener('click', (e) => {
     e.preventDefault();
+    const ingredient = document.querySelector('#ingredient-box').value;
+    let queryHeading = document.getElementById('current_query');
+    queryHeading.removeAttribute('role');
+    queryHeading.innerText = 'Results for ' + ingredient;
+
     // Removes results from previous searches
     removeResults(drinkFlex);
-    const ingredient = document.querySelector('#ingredient-box').value;
     // Retrieves drink id and image for background
     grabDrinks(ingredient);
     backgroundChange(ingredient);

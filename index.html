@@ -18,11 +18,12 @@
 </head>
 <body class="fullPage">
     <header>
-        <section id="page-title">
-            <h1>Prost!</h1>
-        </section>
+        <a id="skip" href="#main_content" > Skip to Main Content</a>
     </header>
-    <main>
+    <main id="main_content">
+        <section id="page-title">
+            <h1>What Should You Drink?</h1>
+        </section>
         <section class="ingredients">
             <form id="ingredient-form" style="display:flex; flex-direction: column;">
                 <label for="ingredient-box"> Ingredient (required)</label>
@@ -31,6 +32,7 @@
                 <button id="ingredient-button">Submit</button>
             </form>
         </section>
+        <h2 role="presentation" id="current_query"></h2>
         <div id="results">
         </div>
     </main>
