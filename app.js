@@ -2,8 +2,14 @@ const drinkFlex = document.querySelector('#results');
 const submitButton = document.querySelector('#ingredient-button');
 
 const grabDrinks = async (ingredient) => {
+    const input = document.getElementById('ingredient-box');
     try {
-        const nonAlc = document.querySelector('#non-alc')
+        const nonAlc = document.querySelector('#non-alc');
+        let error = document.getElementById('ingredient_error_message');
+        if(error){
+            error.remove();
+            input.removeAttribute('aria-describedby');
+        }
         if(nonAlc.checked === true) { // Retrieves all non-alcoholic drinks with out sorting by ingredient
             const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic`;
             const response = await axios.get(url);
@@ -13,22 +19,26 @@ const grabDrinks = async (ingredient) => {
             const response = await axios.get(url);
             drinkLoop(response);
         }
+        revealRecipe();
     } catch (error) {        
-        const input = document.getElementById('ingredient-box');
-        const errorMessage = document.createElement('span');
-        errorMessage.textContent = 'Please enter an ingredient';
-        errorMessage.setAttribute('id', 'ingredient_error_message');
-        input.setAttribute('aria-describedby', 'ingredient_error_message');
-        input.after(errorMessage);
+        if(!document.getElementById('ingredient_error_message')){
+            addErrorMessage(input);
+        }
         input.focus();
         console.error(error);
     }
 }
-
+function addErrorMessage(input){
+    const errorMessage = document.createElement('span');
+    errorMessage.textContent = 'Please enter an ingredient';
+    errorMessage.setAttribute('id', 'ingredient_error_message');
+    input.setAttribute('aria-describedby', 'ingredient_error_message');
+    input.after(errorMessage);
+}
 // Populates drink array and creates div containers for each drink
 function drinkLoop (response) {
-    const drinkData = response.data.drinks
-    console.log(drinkData);
+    const drinkData = response.data.drinks;
+    // console.log(drinkData);
     const drinkList = document.createElement('ul');
     drinkList.setAttribute('style', 'display:flex; flex-flow:row wrap;');
     drinkFlex.appendChild(drinkList);
@@ -55,21 +65,21 @@ function drinkLoop (response) {
         drinkList.appendChild(drinkListItem);
         grabDrinkData(drinkData[i].idDrink);
     }
-    revealRecipe();
 }
 
 function revealRecipe () {
     const revealButtons = document.getElementsByClassName('reveal_recipe');
-    for(let i = 0; i < revealButtons.length; i += 1){
-        revealButtons[i].addEventListener('click', () => {
-                let recipe = revealButtons[i].nextSibling;
-                let expanded = revealButtons[i].getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
-                recipe.classList.toggle('hovered');
-                revealButtons[i].setAttribute('aria-expanded', expanded);
-
-            });
-    }
+    // if(revealButtons){
+        for(let i = 0; i < revealButtons.length; i += 1){
+            revealButtons[i].addEventListener('click', () => {
+                    let recipe = revealButtons[i].nextSibling;
+                    let expanded = revealButtons[i].getAttribute('aria-expanded') === 'true' ? 'false' : 'true';
+                    recipe.classList.toggle('hovered');
+                    revealButtons[i].setAttribute('aria-expanded', expanded);
     
+                });
+        }
+    // }
 }
 
 
@@ -88,9 +98,10 @@ submitButton.addEventListener('click', (e) => {
 
 // Removes results from previous searches
 function removeResults(node) {
-    while(node.firstChild) {
-        node.removeChild(node.firstChild);
-    }
+    node.innerHTML = '';
+    // while(node.firstChild) {
+    //     node.removeChild(node.lastChild);
+    // }
 }
 
 // Changes header background based on unput with default being original in CSS
