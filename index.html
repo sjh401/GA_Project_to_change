@@ -24,15 +24,14 @@
     </header>
     <main>
         <section class="ingredients">
-            <form id="ingredient-form">
-                <input type="text" placeholder="ingredient" id="ingredient-box">
-                <button id="ingredient-button">¡Salud!</button>
-            </form>
-            <form>
-                <p>Check box for only Non-Alcoholic options. <input type="checkbox" name="non-alc" id="non-alc"></p>
+            <form id="ingredient-form" style="display:flex; flex-direction: column;">
+                <label for="ingredient-box"> Ingredient (required)</label>
+                <input required type="text" id="ingredient-box">
+                <label for="non-alc">Check box for only Non-Alcoholic options. <input type="checkbox" name="non-alc" id="non-alc"></label>
+                <button id="ingredient-button">Submit</button>
             </form>
         </section>
-        <div class="results">
+        <div id="results">
         </div>
     </main>
     <footer>

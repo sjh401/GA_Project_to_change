@@ -62,21 +62,31 @@ p {
     flex-flow: column;
     background: #20201d; 
     color: #fff; 
-    padding: 5px; 
-    opacity: 0.75; 
+    padding: 5px;
+    opacity: 0.75;
     font-size: 1.5vh;
     max-height: 8em;
     overflow: scroll;
 }
 .container {
-    opacity: 0;
+    display: none;
 }
-.container:hover {
+
+/* With help from Steve and MDN */
+/* .container:hover {
+    display: block;
+} */
+.container.hovered {
+    display: block;
+}
+
+/* .drink-container:focus-within .container {
     opacity: 0.85;
-}
+} */
 
 /* ids */
 #page-title {
+    z-index: 1;
     font-family: 'Cinzel', serif;
     font-size: 10vh;
     text-shadow: 4px 4px #000000;
@@ -86,7 +96,7 @@ p {
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    background-image: url('https://i.imgur.com/CjvQPNL.jpg?2');
+    background-image: url("https://i.imgur.com/CjvQPNL.jpg?2");
     background-size: 100vw auto;
     background-origin:border-box;
     background-repeat: no-repeat;
@@ -107,7 +117,7 @@ p {
     max-height: 75px;
     border-radius: 10%;
     border-color: rgba(0, 0, 0, 0.5);
-    color: rgba(255, 255, 255, 0);
+    /* color: rgba(255, 255, 255, 0); */
 }
 #ingredient-box {
     font-size: 100%;
